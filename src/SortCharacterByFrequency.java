@@ -16,10 +16,10 @@ public class SortCharacterByFrequency {
 	}
 	
     static class letterEntry{
-        char c;
+        char value;
         int frequency;
         public letterEntry(char c, int frequency){
-            this.c = c;
+            this.value = c;
             this.frequency = frequency;
         }
     }
@@ -55,7 +55,7 @@ public class SortCharacterByFrequency {
         while(!queue.isEmpty()){
         	letterEntry le = queue.poll();
         	for(int i=0; i<le.frequency; i++){
-        		sb.append(le.c);
+        		sb.append(le.value);
         	}
         }
         
