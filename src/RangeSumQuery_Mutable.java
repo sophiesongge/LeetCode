@@ -50,6 +50,7 @@ public class RangeSumQuery_Mutable{
 			}
 		}
 		
+		//和为所有前驱节点相加， 所以步长是i - lowestBit(i)
 		public int getSum(int k){
 			int sum = 0;
 			for(int i = k + 1; i > 0; i = i - lowestBit(i)){
