@@ -6,21 +6,21 @@ public class RangeSumQuery_Mutable{
 		int n;
 		
 		public static void main(String[] args){
-			int[] num = new int[10];
-			for(int i=0; i<10; i++){
-				num[i] = i + 1;
-			}
+			int[] num = {7,2,7,2,0};
 			RangeSum rs = new RangeSum(num);
 			
+			rs.update(4, 6);
 			rs.update(0, 2);
+			rs.update(0, 9);
+			System.out.println(rs.getRangeSum(4, 4));			
+			rs.update(3, 8);
+			System.out.println(rs.getRangeSum(0, 4));
+			rs.update(4, 1);
+			System.out.println(rs.getRangeSum(0, 3));
+			System.out.println(rs.getRangeSum(0, 4));
+			rs.update(0, 4);
 			
-			System.out.println("!!!!!!");
-			for(int i=1; i<=rs.n; i++){
-				System.out.print(rs.BIT[i] + " ");
-			}
-			System.out.println("\n"+"~~~~~~~");
 			
-			System.out.println(rs.getSum(9));
 		}
 		
 		public RangeSum(int[] nums){
@@ -44,10 +44,11 @@ public class RangeSumQuery_Mutable{
 		} 
 		
 		//每次都只有后继节点会根据当前节点的变化而变化， 所以步长是i + lowestBit(i)
-		public void update(int index, int val){
+		public void update(int index, int val){	
 			for(int i = index + 1; i <= this.n; i = i + lowestBit(i)){
 				this.BIT[i] = this.BIT[i] - this.nums[index] + val;
 			}
+			this.nums[index] = val;
 		}
 		
 		//和为所有前驱节点相加， 所以步长是i - lowestBit(i)
@@ -60,7 +61,7 @@ public class RangeSumQuery_Mutable{
 		}
 		
 		public int getRangeSum(int i, int j){
-			return getSum(j) - getSum(i);
+			return getSum(j) - getSum(i - 1);
 		}
 	}
 }
