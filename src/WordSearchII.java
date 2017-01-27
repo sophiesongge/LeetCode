@@ -6,8 +6,8 @@ import java.util.Map;
 /**
  * https://leetcode.com/problems/word-search-ii/
  * @author Sophie
- * 这道题如果按照word search I的方法来判断每一个词是不是能由这个board组成则会超时， 正确的方法是将需要检查的词组成一个TrieTree，
- * 然后每次判断由board形成的词是不是在这个TrieTree中, 其他思路其实和wordsearch I是一样的
+ * 这道题如果按照word search I的方法来判断每一个词是不是能由这个board组成则会超时, 因为对每个词都要进行一次完整的backtracing， 这时候如果能有一个数据结构把所有的词都索引起来让我们只查一次就好了
+ * 正确的方法是将需要检查的词组成一个TrieTree， 然后每次判断由board形成的词是不是在这个TrieTree中, 其他思路其实和wordsearch I是一样的
  */
 public class WordSearchII {
 	public static void main(String[] args){
