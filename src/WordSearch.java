@@ -11,9 +11,12 @@ public class WordSearch {
 		
 		char[][] board = new char[][]{{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}};
 		String word = "ABCCED";
-		String word1 = "ABCB";
+		String word0 = "ABCB";
 		
-		System.out.println(test.exist(board, word1));
+		char[][] board1 = new char[][]{{'a', 'b'}};
+		String word1 = "ba";
+		
+		System.out.println(test.exist(board1, word1));
 	}
 	
     public boolean exist(char[][] board, String word) {
