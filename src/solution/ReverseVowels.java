@@ -1,3 +1,4 @@
+package solution;
 public class ReverseVowels{
 	public static void main(String[] args){
 		ReverseVowels test = new ReverseVowels();

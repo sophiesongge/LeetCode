@@ -1,3 +1,4 @@
+package solution;
 public class RangeSumQuery_Immutable{
 	
 	public static void main(String[] args){

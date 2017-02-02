@@ -1,3 +1,5 @@
+package solution;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -7,13 +9,6 @@ import java.util.List;
  *
  */
 public class WordBreak {
-	
-	public static void main(String[] args){
-		String s = "LeetCode";
-		List<String> wordDict = new ArrayList();
-		wordDict.addAll(Arrays.asList("Leet", "Code"));
-		System.out.println(wordBreak(s, wordDict));
-	}
     
 	public static boolean wordBreak(String s, List<String> wordDict) {
 		boolean[] dp = new boolean[s.length() + 1];

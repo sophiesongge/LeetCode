@@ -1,3 +1,4 @@
+package solution;
 /**
  * https://leetcode.com/problems/insert-delete-getrandom-o1/
  * @author Sophie

@@ -1,3 +1,4 @@
+package solution;
 /**
  * https://leetcode.com/problems/word-search/
  * 这道题直观的想其实是一道图的广度优先搜索题，问题是如果用我们比较熟悉的邻接表的方式来表示图，这个图很难进行表示。 所以退而求其次， 用回溯的思想来做

@@ -1,3 +1,4 @@
+package solution;
 public class NthInteger{
 	public static void main(String[] args){
 		NthInteger test = new NthInteger();

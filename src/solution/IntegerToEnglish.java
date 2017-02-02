@@ -1,3 +1,4 @@
+package solution;
 public class IntegerToEnglish{
 	
 	private String[] LESS10 = new String[]{"", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"};
