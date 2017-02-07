@@ -3,7 +3,7 @@ public class ReverseVowels{
 	public static void main(String[] args){
 		ReverseVowels test = new ReverseVowels();
 		
-		System.out.println(test.reverseVowels("hello"));
+		System.out.println(test.reverseVowels("heallio"));
 	}
 	
 	public String reverseVowels(String s){
@@ -23,7 +23,8 @@ public class ReverseVowels{
 			char temps = sarray[start];
 			sarray[start] = sarray[end];
 			sarray[end] = temps;
-			return new String(sarray);
+			start++;
+			end--;
 		}
 		
 		return new String(sarray);
