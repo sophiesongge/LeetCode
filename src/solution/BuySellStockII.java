@@ -1,7 +1,9 @@
 /**
  * @author Sophie Song
  * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/?tab=Description
- * 这道题相对简单，因为一天可以多次买卖，如果限定一天只能买一次或卖一次就难了
+ * 这道题相对简单，不要把自己绕进去，其实只要比较是不是今天比昨天贵， 不用管之前的情况，
+ * 举个简单的栗子，比如考虑第三天的情况的时候， 因为day3 - day1 = day3 - day2 + day2 - day1, 而day2 - day1 又已经包含在dp[day2]中
+ * 所以，只要day3比day2大，则，dp[day3] = dp[day2] + day3 - day2
  */
 package solution;
 
