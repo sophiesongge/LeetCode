@@ -14,9 +14,6 @@
 
 package solution;
 
-import java.util.Comparator;
-import java.util.PriorityQueue;
-
 public class BuySellStockIII {
     public int maxProfit(int[] prices) {
         if(prices == null || prices.length <= 1) {
@@ -32,6 +29,9 @@ public class BuySellStockIII {
         for(int i=1; i<prices.length; i++) {
         	int profitToday = prices[i] - prices[i-1];
         	for(int j = 2; j>=1; j--) {
+        		//这里倒序的原因是不想让global[k]被覆盖掉 --- 这里也是难理解的一个点， 因为我们简化了二维数组，而选择只用一维数组
+        		//所以相当于这个数组只维护了前一天的信息，而今天的量也只和前一天有关，而我们只care最后一天k次交易的情况，这个情况跟前一天的k-1次交易有关，所以为了不让这个值被覆盖掉，我们选择倒叙
+        		//如果用二维数组则没有这个问题
         		local[j] = Math.max(global[j-1] + profitToday, local[j] + profitToday);
         		global[j] = Math.max(local[j], global[j]);
         	}
