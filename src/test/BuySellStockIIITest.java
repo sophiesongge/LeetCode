@@ -1,5 +1,7 @@
 package test;
 
+import static org.junit.Assert.*;
+
 import org.junit.Test;
 
 import solution.BuySellStockIII;
@@ -15,7 +17,7 @@ public class BuySellStockIIITest {
 		prices = new int[]{1, 4, 2};
 		prices = new int[]{6,1,3,2,4,7};
 		
-		System.out.println(bss.maxProfit(prices));
+		assertEquals(7, bss.maxProfit(prices));
 	}
 	
 }
