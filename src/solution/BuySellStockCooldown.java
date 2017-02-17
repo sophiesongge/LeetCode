@@ -17,6 +17,7 @@ package solution;
 
 public class BuySellStockCooldown {
 	
+	//动态规划
 	public int maxProfit(int[] prices) {
 		if(prices == null || prices.length <= 1) {
 			return 0;
@@ -39,6 +40,7 @@ public class BuySellStockCooldown {
 		return Math.max(profitSell[len], profitDoNothing[len]);
 	}
 	
+	//贪心
 	public int maxProfitBetter(int[] prices) {
 	if(prices == null || prices.length <= 1){
 		return 0;

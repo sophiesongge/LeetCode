@@ -8,6 +8,7 @@
 package solution;
 
 public class BuySellStockII {
+	//贪心
 	public int maxProfit(int[] prices) {
 		if(prices == null || prices.length <=1) {
 			return 0;
@@ -23,6 +24,7 @@ public class BuySellStockII {
 		return profit;
 	}
 	
+	//动态规划
     public int maxProfit0(int[] prices) {
         if(prices == null || prices.length <= 1) {
             return 0;
