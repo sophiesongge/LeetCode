@@ -19,6 +19,8 @@ public class BuySellStockIVTest {
 		prices = new int[]{6,1,3,2,4,7};
 		
 		assertEquals(std.maxProfit(prices), bss.maxProfit(2, prices));
+		
+		assertEquals(bss.maxProfit(2, prices), bss.maxProfit0(2, prices));
 	}
 
 }

@@ -6,6 +6,36 @@ package solution;
  */
 
 public class BuySellStockIV {
+	
+	//动态规划
+	public int maxProfit0(int k, int[] prices) {
+		if(prices == null || prices.length <= 1) {
+			return 0;
+		}
+		int len = prices.length;
+		
+		if(k > len/2) {
+			int maxProfit = 0;
+			for(int i=1; i<len; i++) {
+				maxProfit = maxProfit + Math.max(0, prices[i] - prices[i-1]);
+			}
+			return maxProfit;
+		}
+		
+		int[][] local = new int[len][k+1];
+		int[][] global = new int[len][k+1];
+		
+		for(int i=1; i<len; i++) {
+			int curProfit = prices[i] - prices[i-1];
+			for(int j=k; j>=1; j--) {
+				local[i][j] = Math.max(global[i-1][j-1] + curProfit, local[i-1][j] + curProfit);
+				global[i][j] = Math.max(local[i][j], global[i-1][j]);
+			}		
+		}
+		return global[len-1][k];
+	}
+	
+	//贪心
 	public int maxProfit(int k, int[] prices) {
 		if(prices == null || prices.length <= 1) {
 			return 0;

@@ -18,6 +18,8 @@ public class BuySellStockIIITest {
 		prices = new int[]{6,1,3,2,4,7};
 		
 		assertEquals(7, bss.maxProfit(prices));
+		
+		assertEquals(bss.maxProfit(prices), bss.maxProfit0(prices));
 	}
 	
 }

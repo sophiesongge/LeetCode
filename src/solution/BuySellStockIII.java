@@ -15,6 +15,28 @@
 package solution;
 
 public class BuySellStockIII {
+	
+	//动态规划
+	public int maxProfit0(int[] prices) {
+		if(prices == null || prices.length <=1) {
+			return 0;
+		}
+		int len = prices.length;
+		
+		int[][] local = new int[len][3];
+		int[][] global = new int[len][3];
+		
+		for(int i=1; i<len; i++) {
+			int profitToday = prices[i] - prices[i-1];
+			for(int j = 2; j>=1; j--) {
+				local[i][j] = Math.max(global[i-1][j-1] + profitToday, local[i-1][j] + profitToday);
+				global[i][j] = Math.max(local[i][j], global[i-1][j]);
+			}
+		}
+		return global[len-1][2];
+	}
+	
+	//贪心
     public int maxProfit(int[] prices) {
         if(prices == null || prices.length <= 1) {
         	return 0;
