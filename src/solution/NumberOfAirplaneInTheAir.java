@@ -31,6 +31,7 @@ public class NumberOfAirplaneInTheAir {
             }
             //在当前状态下，结果应该是在当前这个点的位置，重叠的飞机有多少，如果当前点是个start点，则这个数目应该是count的数目，如果当前点是个end点，则这个数目则应该是前一状态的点数，前一状态又是由ans记录的，所以
             //总体来说ans应该是ans和count中大的那个
+            //当然事情还不是那么简单的，同时还要考虑count每次遇到end都要减少一，而ans其实只管数重叠的start的数目，所以ans其实是记录了最大的count
             ans = Math.max(ans, count);
         }
         return ans;
