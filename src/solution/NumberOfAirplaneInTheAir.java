@@ -1,5 +1,6 @@
 package solution;
 /**
+ * http://www.lintcode.com/en/problem/number-of-airplanes-in-the-sky/
  * @author Sophie Song
  * @since 14/03/2017
  */
