@@ -2,6 +2,7 @@ package solution;
 import java.util.ArrayList;
 import java.util.Arrays;
 /**
+ * https://leetcode.com/problems/intersection-of-two-arrays/#/description
  * @author Sophie Song
  * @since 20/03/2017
  */
