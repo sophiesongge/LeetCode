@@ -7,6 +7,7 @@ package solution;
  */
 public class LargestRectangleInHistogram {
 
+    //这个解法对了，但是过不了大集合，会有TLE
     public int largestRectangleArea(int[] heights) {
         int maxSurface = 0;
 
@@ -14,38 +15,31 @@ public class LargestRectangleInHistogram {
             return maxSurface;
         }
 
-        int min = heights[0];
-
         for(int i=0; i<heights.length; i++) {
-            if(heights[i] == 0) {
-                maxSurface = Math.max(maxSurface, min * (i+1));
-                if(i != heights.length - 1) {
-                    min = heights[i+1];
-                }
-            }else{
-                min = Math.min(min, heights[i]);
-            }
-
-
-            int counterBack = 1;
-            int counterForward = 1;
+            int counterBack = 0;
+            int counterForward = 0;
             int j = i;
             int k = i;
-            while(j < heights.length - 1 && heights[j+1] >= heights[j]) {
+            while(j < heights.length - 1 && heights[j+1] >= heights[i]) {
                 j++;
                 counterBack++;
             }
-            int surfaceBack = heights[i] * counterBack;
-            maxSurface = Math.max(maxSurface, surfaceBack);
 
-            while(k > 0 && heights[k-1] >= heights[k]) {
+            int surfaceBack = heights[i] * counterBack;
+
+            while(k > 0 && heights[k-1] >= heights[i]) {
                 k--;
                 counterForward++;
             }
+
             int surfaceForward = heights[i] * counterForward;
-            maxSurface = Math.max(maxSurface, surfaceForward);
+
+            int surface = surfaceBack + surfaceForward + heights[i];
+
+            maxSurface = Math.max(maxSurface, surface);
+            //System.out.println("%%%%%%%%%%" + heights[i] + " : " + maxSurface + "%%%%%%%%%%%");
         }
-        return Math.max(maxSurface, min * heights.length);
+        return maxSurface;
     }
 
 }
