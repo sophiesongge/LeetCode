@@ -8,7 +8,7 @@ package solution;
 public class LargestRectangleInHistogram {
 
     //这个解法对了，但是过不了大集合，会有TLE
-    public int largestRectangleArea(int[] heights) {
+    public int largestRectangleArea0(int[] heights) {
         int maxSurface = 0;
 
         if(heights == null || heights.length == 0) {
