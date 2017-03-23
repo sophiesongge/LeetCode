@@ -50,14 +50,12 @@ public class LargestRectangleInHistogram {
         if(heights == null || heights.length == 0) {
             return 0;
         }
-
         //搞一个stack用来排序，如果当前元素比stack最后栈顶的元素大就压进栈；要不然就出栈，知道比栈顶元素小为止；
         //栈里装的是index，而不是具体的高度
         Stack<Integer> stack = new Stack<>();
-
         int i = 0;
         int maxSurface = 0;
-
+        //最后，为了能让所有的元素都有机会出栈，所以在数组的末尾填一位0来补位
         int[] h = new int[heights.length + 1];
         h = Arrays.copyOf(heights, heights.length + 1);
 
