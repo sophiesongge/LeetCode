@@ -6,6 +6,7 @@ import java.util.ArrayList;
  * @author Sophie Song
  * @since 2017/5/3
  * https://leetcode.com/problems/text-justification/#/description
+ * 要算好当前行需要多少个单词，单词与单词之间需要多少个空格，空格够不够平分，如果不能平分，多出来多少个
  */
 public class TextJustification {
     public ArrayList<String> fullJustify(String[] words, int L) {
