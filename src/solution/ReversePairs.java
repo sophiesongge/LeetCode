@@ -1,7 +1,5 @@
 package solution;
 
-import java.util.Arrays;
-
 /**
  * @author Sophie Song
  * @since 2017/5/5
@@ -72,7 +70,8 @@ public class ReversePairs {
     }
 */
 
-
+//第二个方法是MergeSort, 这个mergesort不是很好理解
+/*
     private int mergeSort(int[] A, int start, int end) {
         if(start >= end) {
             return 0;
@@ -107,6 +106,52 @@ public class ReversePairs {
         nums = new int[]{2,4,3,5,1};
         System.out.println(test.reversePairs(nums));
 
+    }*/
+
+//这个方法还是MergeSort，这个好理解很多
+
+    public void merge(int[] nums, int start, int mid, int end) {
+        int[] helper = new int[nums.length];
+        for(int i=0; i<nums.length; i++) {
+            helper[i] = nums[i];
+        }
+
+        int left = start;
+        int right = mid+1;
+        int index = start;
+
+        while(left <= mid && right <= end) {
+            if(helper[left] < helper[right]) {
+                nums[index++] = helper[left++];
+            }else {
+                nums[index++] = helper[right++];
+            }
+        }
+        while(left<=mid) {
+            nums[index++] = nums[left++];
+        }
+    }
+
+    public int mergeSort(int[] nums, int start, int end) {
+        if(start > end) {
+            return 0;
+        }
+
+        int mid = start + (end - start)/2;
+
+        int count = mergeSort(nums, start, mid) + mergeSort(nums, mid+1, end);
+
+        for(int left = start, right = mid+1; left <= mid; left++) {
+            while(right <= end && nums[left]/2.0 > nums[right]) {
+                right++;
+            }
+            count = count + right - (mid + 1);
+        }
+        return count;
+    }
+
+    public int reversePairs(int[] nums) {
+        return mergeSort(nums, 0, nums.length-1);
     }
 
 }
