@@ -1,5 +1,7 @@
 package solution;
 
+import java.util.Arrays;
+
 /**
  * @author Sophie Song
  * @since 2017/5/5
@@ -69,52 +71,25 @@ public class ReversePairs {
 
     }
 */
-    public int merge(int[] nums, int start, int mid, int end) {
-        int[] temp = new int[nums.length];
-        for(int i=0; i<nums.length; i++) {
-            temp[i] = nums[i];
-        }
 
-        int count = 0;
-
-        int leftIndex = start;
-        int rightIndex = mid + 1;
-        int index = start;
-        int p = mid + 1;
-
-        while(leftIndex <= mid && rightIndex <= end) {
-            while(p <= end && temp[leftIndex] > 2L * temp[p]) {
-                p++;
-            }
-            count = count + p - (mid+1);
-
-            if(temp[leftIndex] <= temp[rightIndex]) {
-                nums[index++] = temp[leftIndex++];
-            }else{
-                nums[index++] = temp[rightIndex++];
-            }
-        }
-
-        while(leftIndex <= mid) {
-            nums[index++] = temp[leftIndex++];
-        }
-
-        return count;
-    }
 
     private int mergeSort(int[] A, int start, int end) {
         if(start >= end) {
             return 0;
         }
 
-        int mid = start + (end - start) / 2;
-        int sum = 0;
+        int mid = start + (end - start)/2;
 
-        sum = sum + mergeSort(A, start, mid);
-        sum = sum + mergeSort(A, mid+1, end);
-        sum = sum + merge(A, start, mid, end);
+        int count = mergeSort(A, start, mid) + mergeSort(A, mid+1, end);
 
-        return sum;
+        for(int left = start, right = mid+1; left <= mid; left++) {
+            while(right <= end && A[left]/2.0 > A[right]) {
+                right++;
+            }
+            count = count + right - (mid + 1);
+        }
+        Arrays.sort(A, start, end+1);
+        return count;
     }
 
     public int reversePairs(int[] A) {
