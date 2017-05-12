@@ -7,7 +7,7 @@ import java.util.List;
  * @author Sophie Song
  * @since 2017/5/12
  * https://leetcode.com/problems/count-of-smaller-numbers-after-self/#/description
- * 这道题的解题思路和reverse pairs一样，最简单的是用BST来做，典型的BST应用题
+ * 这道题的解题思路和reverse pairs一样，最简单的是用BST来做，典型的BST应用题。当然也可以用merge-sort，还是两个思路
  */
 public class CountSmallerNumbers {
     private class BST {
