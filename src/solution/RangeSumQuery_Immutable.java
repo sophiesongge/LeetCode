@@ -13,21 +13,21 @@ public class RangeSumQuery_Immutable{
 	}
 	
 	static class RangeSum{
-		int[] sums;
+		int[] nums;
 		
 	    public RangeSum(int[] nums) {
-	        this.sums = new int[nums.length];
-	        for(int i=0; i<sums.length; i++){
-	        	int sum = 0;
-	        	for(int j=0; j<=i; j++){
-	        		sum += nums[j];
-	        	}
-	        	sums[i] = sum;
-	        }
+	        for(int i=1; i<nums.length; i++) {
+	        	nums[i] = nums[i-1] + nums[i];
+			}
+			this.nums = nums;
 	    }
 
 	    public int sumRange(int i, int j) {
-	        return sums[j] - sums[i-1];
+			if(i == 0) {
+				return this.nums[j];
+			}else {
+				return this.nums[j] - this.nums[i-1];
+			}
 	    }
 	}
 }
