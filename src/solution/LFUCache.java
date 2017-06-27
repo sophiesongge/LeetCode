@@ -9,34 +9,34 @@ import java.util.PriorityQueue;
 
 public class LFUCache {
     public int capacity;
+    private int id;
     private Map<Integer, LFUNode> map;
     private PriorityQueue<LFUNode> queue;
 
     public LFUCache(int capacity) {
         this.capacity = capacity;
         this.map = new HashMap<>();
+        this.id = 0;
         Comparator<LFUNode> cmp = new Comparator<LFUNode>() {
             @Override
             public int compare(LFUNode o1, LFUNode o2) {
                 if(o1.frequency != o2.frequency){
                     return o1.frequency - o2.frequency;
                 }else{
-                    return (int) ((int) o1.timestamp - o2.timestamp)*10000000;
+                    return o1.id - o2.id;
                 }
-
-
-
             }
         };
         this.queue = new PriorityQueue<>(10, cmp);
     }
 
     public int get(int key) {
+        id++;
         if(map.containsKey(key)){
             LFUNode n = map.get(key);
             queue.remove(n);
             n.frequency++;
-            n.timestamp = System.currentTimeMillis();
+            n.id = id;
             map.put(key, n);
             queue.add(n);
             return n.value;
@@ -46,16 +46,17 @@ public class LFUCache {
     }
 
     public void put(int key, int value) {
+        id++;
         if(map.containsKey(key)){
             LFUNode n = map.get(key);
             queue.remove(n);
             n.value = value;
             n.frequency++;
-            n.timestamp = System.currentTimeMillis();
+            n.id = id;
             map.put(key, n);
             queue.add(n);
         }else{
-            LFUNode n = new LFUNode(key, value);
+            LFUNode n = new LFUNode(key, value, id);
             if(map.size() < capacity) {
                 map.put(key, n);
                 queue.add(n);
@@ -95,12 +96,12 @@ class LFUNode{
     int key;
     int value;
     int frequency;
-    long timestamp;
+    int id;
 
-    public LFUNode(int key, int value) {
+    public LFUNode(int key, int value, int id) {
         this.key = key;
         this.value = value;
         this.frequency = 1;
-        this.timestamp = System.currentTimeMillis();
+        this.id = id;
     }
 }
