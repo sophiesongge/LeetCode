@@ -44,11 +44,12 @@ public class stackFromQueue {
      */
     public int peek() {
         try{
-
+            return q1.isEmpty() ? q2.peek() : q1.peek();
         }catch (NullPointerException e){
             System.out.println("The Stack is empty, can not peek.");
+            e.printStackTrace();
+            return -1;
         }
-        return q1.isEmpty() ? q2.peek() : q1.peek();
     }
 
     /**
@@ -57,11 +58,12 @@ public class stackFromQueue {
      */
     public int pop() {
         try{
-
+            return q1.isEmpty() ? q2.poll() : q1.poll();
         }catch (NullPointerException e) {
             System.out.println("The Stack is empty, can not poll.");
+            e.printStackTrace();
+            return -1;
         }
-        return q1.isEmpty() ? q2.poll() : q1.poll();
     }
 
     /**
@@ -71,4 +73,5 @@ public class stackFromQueue {
     public boolean isEmpty(){
         return q1.isEmpty() && q2.isEmpty();
     }
+
 }
