@@ -23,7 +23,7 @@ public class stackFromQueue {
      * Push an element to the stack
      * @param a
      */
-    public void push(int a){
+    public synchronized void push(int a) throws InterruptedException {
         if(q1.isEmpty()){
             q1.add(a);
             while(!q2.isEmpty()){
@@ -42,7 +42,7 @@ public class stackFromQueue {
      * Show the top element in the stack
      * @return
      */
-    public int peek() {
+    public synchronized int peek() throws InterruptedException {
         try{
             return q1.isEmpty() ? q2.peek() : q1.peek();
         }catch (NullPointerException e){
@@ -56,7 +56,7 @@ public class stackFromQueue {
      * Show the top element in the stack, and delete it from the stack
      * @return
      */
-    public int pop() {
+    public synchronized int pop() throws InterruptedException {
         try{
             return q1.isEmpty() ? q2.poll() : q1.poll();
         }catch (NullPointerException e) {
