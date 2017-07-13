@@ -26,7 +26,7 @@ public class WordBreakII {
 
 	/**
 	 * 这个是Backtracing的方法，结果是对的，问题是s如果是很多个a的情况会有TLE，单机测试了一下，回溯确实是很耗时，所以实际应用中必须要剪枝，否自就是个toy
-	 * 这道题剪枝的方式其实是利用了WordBreakI，来体现先判断一下s能不能被wordDict中的单词分解 --- 其实这也是个不错的方法， 简单易懂， 但是确实是比后面那个耗时很多
+	 * 这道题剪枝的方式其实是利用了WordBreakI，来提前先判断一下s能不能被wordDict中的单词分解 --- 其实这也是个不错的方法， 简单易懂， 但是确实是比后面那个耗时很多
 	 * @param s
 	 * @param wordDict
 	 * @return
