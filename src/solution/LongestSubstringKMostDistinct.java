@@ -7,6 +7,7 @@ import java.util.Map;
  * Created by Sophie on 2019/2/20.
  * LintCode: 386. Longest Substring with At Most K Distinct Characters
  * https://www.lintcode.com/problem/longest-substring-with-at-most-k-distinct-characters/description
+ * https://leetcode.com/articles/longest-substring-with-at-most-two-distinct-charac/
  */
 public class LongestSubstringKMostDistinct {
 
