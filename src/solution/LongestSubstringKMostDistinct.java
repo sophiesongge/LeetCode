@@ -32,6 +32,8 @@ public class LongestSubstringKMostDistinct {
             }
             j++;
             while(dist.size() > k) {
+                //当dist的size比k大的时候,意味着我们用到的不同的字母已经超过k个了
+                //这个时候我们就不断地从开头减字母, 直到字母数又回到k个为止
                 dist.put(s.charAt(i), dist.get(s.charAt(i))-1);
                 if(dist.get(s.charAt(i)) == 0) {
                     dist.remove(s.charAt(i));
