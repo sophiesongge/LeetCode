@@ -5,8 +5,14 @@ import java.util.Map;
 
 /**
  * Created by Sophie on 2019/2/20.
+ * https://leetcode.com/problems/longest-substring-with-at-least-k-repeating-characters/
  */
 class LongestSubstringKLeastRepeat {
+    public static void main(String[] args) {
+        LongestSubstringKLeastRepeat test = new LongestSubstringKLeastRepeat();
+        System.out.println("The answer for \"aaabbbcc 3\" is: " + test.longestSubstring("aaabbbcc", 3));
+    }
+
     public int longestSubstring(String s, int k) {
         int max = 0;
         for(int u=1; u<=26; u++) {
